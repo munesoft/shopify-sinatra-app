@@ -191,15 +191,13 @@ Now we can deploy the new application to Heroku. Deploying to Heroku is as simpl
 git push heroku master
 ```
 
-A `rake deploy2heroku` command is included in the generated Rakefile which does just this.
-
 Now that our application is deployed we need to run `rake db:migrate` to initialize our database on Heroku. To do this run:
 
 ```
 heroku run rake db:migrate
 ```
 
-We also need to set our environment variables on Heroku. The environment variables are stored in `.env` and are not tracked by git. This is to protect your credentials in the case of a source control breach. Heroku provides a command to set environment variables: `heroku config:set VAR=foo`. In the generated Rakefile there is a helper method that will properly set all the variables in your `.env` file:
+We also need to set our environment variables on Heroku. Heroku provides a command to set environment variables: `heroku config:set VAR=foo`. You will need to properly set all the variables in your `.env` file however you should use separate keys for development and production.
 
 ```
 rake creds2heroku
